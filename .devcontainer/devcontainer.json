@@ -1,0 +1,16 @@
+{
+  "name": "WordPress Dev Container",
+  "dockerFile": "Dockerfile",
+  "context": "..",
+  "forwardPorts": [80],
+  "postCreateCommand": "wp core install --url='http://localhost' --title='WordPress Dev' --admin_user='admin' --admin_password='password' --admin_email='admin@example.com' --skip-email",
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "/bin/bash"
+  },
+  "extensions": [
+    "ms-azuretools.vscode-docker",
+    "bmewburn.vscode-intelephense-client",
+    "felixfbecker.php-debug"
+  ],
+  "remoteUser": "www-data"
+}

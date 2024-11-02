@@ -1,0 +1,29 @@
+services:
+  wordpress:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: codecare
+      WORDPRESS_DB_PASSWORD: codecare
+      WORDPRESS_DB_NAME: codecare
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:11.5
+    environment:
+      MYSQL_ROOT_PASSWORD: codecare
+      MYSQL_DATABASE: codecare
+      MYSQL_USER: codecare
+      MYSQL_PASSWORD: codecare
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
